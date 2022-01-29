@@ -5,13 +5,16 @@ import 'package:example/tiled_map/game_tiled_map.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:example/simple_example/sounds.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (!kIsWeb) {
     await Flame.device.setLandscape();
     await Flame.device.fullScreen();
+
   }
+  await Sounds.initialize();
   runApp(
     MaterialApp(
       home: Menu(),
@@ -103,7 +106,7 @@ class Menu extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: Text('Tiled Map'),
+                child: Text('English'),
                 onPressed: () {
                   //Navigator.push(context, MaterialPageRoute(builder: (context) => GameTiledMap(),),);
                   languageSet = 'eng';

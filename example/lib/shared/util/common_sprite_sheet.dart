@@ -161,6 +161,40 @@ class CommonSpriteSheet {
         ),
       );
 
+
+  static Future<SpriteAnimation> get infoAnimated => SpriteAnimation.load(
+    "itens/info01.png",
+    SpriteAnimationData.sequenced(
+      amount: 4,
+      stepTime: 0.35,
+      textureSize: Vector2(16, 16),
+    ),
+  );
+
+  static Future<SpriteAnimation> get mahlsteinSingle => SpriteAnimation.load(
+    "itens/mahlstein.png",
+    SpriteAnimationData.sequenced(
+      amount: 1,
+      stepTime: 1,
+      textureSize: Vector2(129, 128),
+    ),
+  );
+
+  static Future<SpriteAnimation> get mahlsteinAnimated => SpriteAnimation.load(
+    "itens/mahlstein.png",
+    SpriteAnimationData.sequenced(
+      amount: 12,
+      stepTime: 0.1,
+      textureSize: Vector2(129, 128),
+    ),
+  );
+
+
+
+
+
+
+
   static Future<Sprite> get barrelSprite => Sprite.load('itens/barrel.png');
   static Future<Sprite> get columnSprite => Sprite.load('itens/column.png');
   static Future<Sprite> get spikesSprite => Sprite.load('itens/spikes.png');

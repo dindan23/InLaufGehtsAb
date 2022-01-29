@@ -1,4 +1,8 @@
 
+import 'package:bonfire/collision/collision_area.dart';
+import 'package:bonfire/tiled/model/tiled_data_object_collision.dart';
+import 'package:bonfire/util/collision_game_component.dart';
+import 'package:example/shared/decoration/column.dart';
 import 'package:example/simple_example/bonfire_ref.dart';
 import 'package:bonfire/bonfire.dart';
 import 'package:bonfire/background/background_image_game.dart';
@@ -20,7 +24,10 @@ import 'package:flame/components.dart';
 import 'package:example/shared/util/player_sprite_sheet.dart';
 import 'package:example/shared/util/common_sprite_sheet.dart';
 import 'package:example/simple_example/text.dart';
-import 'package:example/shared/decoration/mission01.dart';
+import 'package:example/simple_example/missions.dart';
+import 'package:example/simple_example/collisionObj.dart';
+import 'package:example/simple_example/sounds.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 String languageSet = 'ger';
 String streamText = 'BEGIN';
@@ -47,6 +54,7 @@ mixin BonfireHasGameRef {
           .forEach((e) => e.gameRef = gameRef);
     }
   }
+
 }
 
 ///
@@ -72,7 +80,8 @@ class SimpleExampleGame extends StatelessWidget
   @override
   Widget build(BuildContext context) {
 
-    print(Texter().getText('intro01'));
+
+
 
     return BonfireTiledWidget(
       joystick: Joystick(
@@ -83,7 +92,29 @@ class SimpleExampleGame extends StatelessWidget
         forceTileSize: Size(16, 16),
         objectsBuilder: {
           //'goblin': (properties) => WizardNPC(Vector2(0,0)),
-          'mission01': (properties) => WizardNPC(Vector2(0,0))
+          'mission01': (properties) => Mission_01(properties.position),
+          'mission02': (properties) => Mission_02(properties.position),
+          'mission03': (properties) => Mission_03(properties.position),
+          'mission03_1': (properties) => Mission_03_1(properties.position),
+          'mission04': (properties) => Mission_04(properties.position),
+          'mission05': (properties) => Mission_05(properties.position),
+          'mission06': (properties) => Mission_06(properties.position),
+          'mission07': (properties) => Mission_07(properties.position),
+          'mission07_1': (properties) => Mission_07_1(properties.position),
+          'mission08': (properties) => Mission_08(properties.position),
+          'mission08_End': (properties) => Mission_08_End(properties.position),
+
+
+          'barrel01': (properties) => BarrelDraggable(properties.position),
+          'barrel02': (properties) => BarrelDraggable(properties.position),
+          'barrel03': (properties) => BarrelDraggable(properties.position),
+          'barrel04': (properties) => BarrelDraggable(properties.position),
+          'barrel05': (properties) => BarrelDraggable(properties.position),
+          'barrel06': (properties) => BarrelDraggable(properties.position),
+          'barrel07': (properties) => BarrelDraggable(properties.position),
+
+         // 'col01' : (properties) =>
+
 
         },
       ),
@@ -93,7 +124,7 @@ class SimpleExampleGame extends StatelessWidget
         smoothCameraEnabled: true,
         smoothCameraSpeed: 2,
       ),
-      player: MyPlayer(Vector2(40, 60)),
+      player: MyPlayer(Vector2(1200, 1215)),
     );
 
     
@@ -101,57 +132,4 @@ class SimpleExampleGame extends StatelessWidget
 }
 
 
-
-
-
-
-class WizardNPC extends GameDecoration {
-
-
-  bool _showConversation = false;
-  WizardNPC(
-      Vector2 position,
-      ) : super.withAnimation(
-    animation: CommonSpriteSheet.chestAnimated,
-    position: position,
-    size: Vector2(16 * 0.8,16)
-  );
-
-  @override
-  void update(double dt) {
-    super.update(dt);
-    if (gameRef.player != null) {
-      this.seeComponent(
-        gameRef.player!,
-        observed: (player) {
-          if (!_showConversation) {
-            _showConversation = true;
-            _showIntroduction();
-          }
-        },
-        radiusVision: (2 * 16),
-      );
-    }
-  }
-
-  void _showIntroduction()  {
-    //Sounds.interaction();
-
-    TalkDialog.show(gameRef.context, [
-      Say(
-
-        text: [
-          TextSpan(text: Texter().getText('intro01')),
-        ],
-
-      ),
-
-
-    ], onChangeTalk: (index) {
-      //Sounds.interaction();
-    }, onFinish: () {
-      //Sounds.interaction();
-    });
-  }
-}
 
