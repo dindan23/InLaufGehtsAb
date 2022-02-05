@@ -81,7 +81,7 @@ class SimpleExampleGame extends StatelessWidget
   Widget build(BuildContext context) {
 
 
-
+  Sounds.backgroundMusic();
 
     return BonfireTiledWidget(
       joystick: Joystick(

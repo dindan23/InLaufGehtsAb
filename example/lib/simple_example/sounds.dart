@@ -18,7 +18,7 @@ class Sounds {
 
   static void backgroundMusic() {
     if (kIsWeb) return;
-    FlameAudio.loopLongAudio('sound_bg.mp3', volume: 0.4);
+    FlameAudio.loopLongAudio('musicbg.mp3', volume: 0.1);
   }
 
   static void TextOpen() {
@@ -28,7 +28,7 @@ class Sounds {
 
   static void MahlsteinAudio() {
     if (kIsWeb) return;
-    FlameAudio.loop('interaction.wav', volume: 0.2);
+    FlameAudio.loop('mahlstein.mp3', volume: 0.4);
   }
 
   static void PickUp() {

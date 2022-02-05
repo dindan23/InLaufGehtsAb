@@ -26,22 +26,36 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan[900],
-      body: Center(
+      body: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/Startbild.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+
         child: Column(
+
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
               'In Lauf gehts ab!',
-              style: TextStyle(fontSize: 60, color: Colors.white),
+
+              style: TextStyle(
+                backgroundColor: Colors.white,
+                  fontSize: 40,
+                  color: Colors.black,
+              ),
             ),
             SizedBox(
-              height: 70,
+              height: 50,
             ),
             SizedBox(
               width: 300,
               child: ElevatedButton(
                 style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(0, 0, 0, 0.8)),
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -54,19 +68,10 @@ class Menu extends StatelessWidget {
                 },
               ),
             ),
+
             SizedBox(
-              height: 150,
-            ),
-            SizedBox(
+              height: 50,
 
-              height: 100,
-
-
-              child: Text('SPRACHE',
-                  style: TextStyle( fontSize: 40),
-                  textAlign: TextAlign.center
-
-              ),
             ),
             SizedBox(
               width: 200,
@@ -74,13 +79,19 @@ class Menu extends StatelessWidget {
 
               child: ElevatedButton(
                 style: ButtonStyle(
+
+                  backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(200, 200,200, 0.7)),
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
                 ),
-                child: Text('German'),
+                child: Text('German', style: TextStyle(
+                color: Colors.black,
+                ),
+                ),
+
                 onPressed: () {
                   //Navigator.push(context, MaterialPageRoute(builder: (context) => GameManualMap()),);
                   languageSet = 'ger';
@@ -100,13 +111,17 @@ class Menu extends StatelessWidget {
 
               child: ElevatedButton(
                 style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(200, 200,200, 0.7)),
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
                 ),
-                child: Text('English'),
+                child: Text('English', style: TextStyle(
+                color: Colors.black,
+                ),
+                ),
                 onPressed: () {
                   //Navigator.push(context, MaterialPageRoute(builder: (context) => GameTiledMap(),),);
                   languageSet = 'eng';
@@ -122,11 +137,11 @@ class Menu extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 40,
+        height: 20,
         child: Center(
           child: Text(
             'Entwickelt von Vanessa Neubert und Daniel Dinnes',
-            style: TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 15),
           ),
         ),
       ),
