@@ -1,33 +1,11 @@
-
-import 'package:bonfire/collision/collision_area.dart';
-import 'package:bonfire/tiled/model/tiled_data_object_collision.dart';
-import 'package:bonfire/util/collision_game_component.dart';
-import 'package:example/shared/decoration/column.dart';
-import 'package:example/simple_example/bonfire_ref.dart';
 import 'package:bonfire/bonfire.dart';
-import 'package:bonfire/background/background_image_game.dart';
-
-import 'package:example/simple_example/my_enemy.dart';
 import 'package:example/simple_example/my_player.dart';
 import 'package:flutter/material.dart';
-
 import 'package:example/shared/decoration/barrel_dragable.dart';
-import 'package:example/shared/decoration/chest.dart';
-import 'package:example/shared/decoration/spikes.dart';
-import 'package:example/shared/decoration/torch.dart';
-import 'package:example/shared/enemy/goblin.dart';
-import 'package:example/manual_map/dungeon_map.dart';
-
 import 'package:bonfire/base/bonfire_game_interface.dart';
 import 'package:flame/components.dart';
-
-import 'package:example/shared/util/player_sprite_sheet.dart';
-import 'package:example/shared/util/common_sprite_sheet.dart';
-import 'package:example/simple_example/text.dart';
 import 'package:example/simple_example/missions.dart';
-import 'package:example/simple_example/collisionObj.dart';
 import 'package:example/simple_example/sounds.dart';
-import 'package:flame_audio/flame_audio.dart';
 
 String languageSet = 'ger';
 String streamText = 'BEGIN';
